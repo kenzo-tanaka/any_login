@@ -124,7 +124,7 @@ module AnyLogin
 
   def self.collection_raw(klass)
     @@collection_raw = begin
-      result = klass.send(AnyLogin.collection_method)
+      result = klass.constantize.send(AnyLogin.collection_method)
       if limit == :none
         format_collection_raw(result)
       else
