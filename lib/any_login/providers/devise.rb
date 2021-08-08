@@ -4,8 +4,6 @@ module AnyLogin
 
       module Controller
 
-        attr_reader :klass_name
-
         def initialize(klass_name)
           @klass_name = klass_name
         end
