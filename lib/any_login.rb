@@ -100,7 +100,7 @@ module AnyLogin
   end
 
   def self.klasses
-    @@klasses = AnyLogin.klass_names
+    @@klasses = AnyLogin.klass_names.map(&:constantize)
   end
 
   def self.cookie_name
@@ -124,7 +124,7 @@ module AnyLogin
 
   def self.collection_raw(klass)
     @@collection_raw = begin
-      result = klass.constantize.send(AnyLogin.collection_method)
+      result = klass.send(AnyLogin.collection_method)
       if limit == :none
         format_collection_raw(result)
       else
