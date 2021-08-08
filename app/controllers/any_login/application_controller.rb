@@ -9,11 +9,6 @@ module AnyLogin
       end
     end
 
-    DEFAULT_SIGN_IN = proc do |loginable|
-      reset_session
-      sign_in AnyLogin.klass.to_s.parameterize.underscore.to_sym, loginable
-    end
-
     def any_login
       try_not_to_leak_any_login_is_installed
       head 403 && return unless AnyLogin.verify_access_proc.call(self)
@@ -22,7 +17,10 @@ module AnyLogin
       # Devise
       klass = params[:as].constantize
       @loginable = klass.find(user_id)
-      sign_in = AnyLogin.sign_in || DEFAULT_SIGN_IN
+      sign_in = proc do |loginable|
+        reset_session
+        sign_in klass.to_s.parameterize.underscore.to_sym, loginable
+      end
       instance_exec(@loginable, &sign_in)
 
       redirect_to main_app.send(AnyLogin.redirect_path_after_login)
