@@ -10,11 +10,10 @@ module AnyLogin
     end
 
     def any_login
-      p params[:as]
       try_not_to_leak_any_login_is_installed
       head 403 && return unless AnyLogin.verify_access_proc.call(self)
       add_to_previous
-      AnyLogin.provider::Controller.instance_method(:any_login_sign_in).bind(self).call
+      AnyLogin.provider::Controller.new(params[:as]).instance_method(:any_login_sign_in).bind(self).call
     end
 
     private

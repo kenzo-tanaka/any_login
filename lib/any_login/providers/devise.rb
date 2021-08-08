@@ -4,6 +4,12 @@ module AnyLogin
 
       module Controller
 
+        attr_reader :klass_name
+
+        def initialize(klass_name)
+          @klass_name = klass_name
+        end
+
         DEFAULT_SIGN_IN = proc do |loginable|
           reset_session
           sign_in AnyLogin.klass.to_s.parameterize.underscore.to_sym, loginable
@@ -14,7 +20,7 @@ module AnyLogin
         end
 
         def any_login_sign_in
-          @loginable = AnyLogin.klass.find(user_id)
+          @loginable = @klass_name.constantize.find(user_id)
 
           sign_in = AnyLogin.sign_in || DEFAULT_SIGN_IN
           instance_exec(@loginable, &sign_in)
