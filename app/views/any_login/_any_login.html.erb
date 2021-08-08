@@ -1,6 +1,6 @@
 <% AnyLogin.klasses.each do |klass| %>
   <div class='<%= any_login_klasses %>'>
-    <%= form_tag any_login.sign_in_path, :method => :post do %>
+    <%= form_tag any_login.sign_in_path(as: klass), :method => :post do %>
       <%= image_tag 'any_login/person.png', :alt => klass, :onclick => "AnyLogin.on_image_click();" %>
       <span class='hidden_box'>
         <%= any_login_select(klass) %>

@@ -10,6 +10,7 @@ module AnyLogin
     end
 
     def any_login
+      p params[:as]
       try_not_to_leak_any_login_is_installed
       head 403 && return unless AnyLogin.verify_access_proc.call(self)
       add_to_previous
