@@ -99,6 +99,10 @@ module AnyLogin
     @@klass = AnyLogin.klass_name.constantize
   end
 
+  def self.klasses
+    @@klasses = AnyLogin.klass_names
+  end
+
   def self.cookie_name
     module_parent_name = if Rails::VERSION::MAJOR >= 6
                            Rails.application.class.module_parent_name
