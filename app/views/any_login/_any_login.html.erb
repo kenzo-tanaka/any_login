@@ -3,7 +3,7 @@
     <%= form_tag any_login.sign_in_path, :method => :post do %>
       <%= image_tag 'any_login/person.png', :alt => klass, :onclick => "AnyLogin.on_image_click();" %>
       <span class='hidden_box'>
-        <%= any_login_select %>
+        <%= any_login_select(klass) %>
         <%= any_login_submit %>
       </span>
     <% end %>
