@@ -14,17 +14,7 @@ module AnyLogin
       head 403 && return unless AnyLogin.verify_access_proc.call(self)
       add_to_previous
 
-      # Devise
-      klass = params[:as].constantize
-      @loginable = klass.find(user_id)
-      sign_in = proc do |loginable|
-        reset_session
-        sign_in klass.to_s.parameterize.underscore.to_sym, loginable
-      end
-      instance_exec(@loginable, &sign_in)
-
-      redirect_to main_app.send(AnyLogin.redirect_path_after_login)
-      # AnyLogin.provider::Controller.instance_method(:any_login_sign_in).bind(self).call
+      AnyLogin.provider::Controller.instance_method(:any_login_sign_in).bind(self).call
     end
 
     private
@@ -39,6 +29,10 @@ module AnyLogin
 
     def user_id
       params[:back_to_previous_id].presence || params[:selected_id].presence || params[:id]
+    end
+
+    def klass
+      params[:as]
     end
 
     def previous
