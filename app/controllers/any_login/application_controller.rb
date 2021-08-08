@@ -13,7 +13,15 @@ module AnyLogin
       try_not_to_leak_any_login_is_installed
       head 403 && return unless AnyLogin.verify_access_proc.call(self)
       add_to_previous
-      AnyLogin.provider::Controller.instance_method(:any_login_sign_in).bind(self).call
+
+      # Devise
+      klass = params[:as].constantize
+      @loginable = klass.find(user_id)
+      sign_in = AnyLogin.sign_in
+      instance_exec(@loginable, &sign_in)
+
+      redirect_to main_app.send(AnyLogin.redirect_path_after_login)
+      # AnyLogin.provider::Controller.instance_method(:any_login_sign_in).bind(self).call
     end
 
     private
