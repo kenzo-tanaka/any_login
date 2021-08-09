@@ -6,7 +6,6 @@
         <%= form_tag any_login.sign_in_path(as: klass), :method => :post, class: 'any-login__form' do %>
           <span>
             <%= any_login_select(klass) %>
-            <%= any_login_submit %>
           </span>
         <% end %>
       </div>
