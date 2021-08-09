@@ -1,9 +1,9 @@
-<div class="any_login" style="position: fixed; bottom: 0; left: 0; z-index: 100;">
-  <%= image_tag 'any_login/person.png' %>
-  <div class="any_login_form_wrapper">
+<div class="any-login">
+  <%= image_tag 'any_login/person.png', class: 'any-login__person-img' %>
+  <div class="any-login__forms-wrapper" style="padding: 10px 0;">
     <% AnyLogin.klasses.each do |klass| %>
       <div>
-        <%= form_tag any_login.sign_in_path(as: klass), :method => :post do %>
+        <%= form_tag any_login.sign_in_path(as: klass), :method => :post, class: 'any-login__form' do %>
           <span>
             <%= any_login_select(klass) %>
             <%= any_login_submit %>
@@ -13,6 +13,18 @@
     <% end %>
   </div>
 </div>
+
+<style>
+    .any-login {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        opacity: 0.5;
+        background: #5c4383;
+        color: white;
+        z-index: 100;
+    }
+</style>
 
 
 <!--<script type="text/javascript" charset="utf-8">-->
