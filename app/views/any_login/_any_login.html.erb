@@ -1,5 +1,5 @@
 <% AnyLogin.klasses.each do |klass| %>
-  <div class='<%= any_login_klasses %>'>
+  <div class='<%= any_login_klasses %> any_login'>
     <%= form_tag any_login.sign_in_path(as: klass), :method => :post do %>
       <%= image_tag 'any_login/person.png', :alt => klass, :onclick => "AnyLogin.on_image_click();" %>
       <span class='hidden_box'>
@@ -54,7 +54,7 @@
 </script>
 
 <style type="text/css" media="screen">
-  #any_login {
+  .any_login {
     position: fixed;
     opacity: 0.5;
     background: #5c4383;
@@ -63,12 +63,12 @@
     line-height: 20px;
     z-index: 10000;
   }
-  #any_login form {
+  .any_login form {
     padding: 0;
     margin: 0;
     height: auto;
   }
-  #any_login input, #any_login select {
+  .any_login input, .any_login select {
     color: black;
     padding: 0;
     margin: 0;
@@ -81,62 +81,62 @@
     font-size: auto;
     line-height: auto;
   }
-  #any_login .hidden_box {
+  .any_login .hidden_box {
     display: none;
   }
-  #any_login .visible_box {
+  .any_login .visible_box {
     display: inline;
   }
-  #any_login.any_login_top_left {
+  .any_login.any_login_top_left {
     top: 0;
     left: 0;
   }
-  #any_login.any_login_top_right {
+  .any_login.any_login_top_right {
     top: 0;
     right: 0;
   }
-  #any_login.any_login_bottom_left {
+  .any_login.any_login_bottom_left {
     bottom: 0;
     left: 0;
   }
-  #any_login.any_login_bottom_right {
+  .any_login.any_login_bottom_right {
     bottom: 0;
     right: 0;
   }
-  #any_login.any_login_visible {
+  .any_login.any_login_visible {
     opacity: 1;
   }
-  #any_login img {
+  .any_login img {
     cursor: pointer;
     vertical-align: middle;
   }
-  #any_login:hover {
+  .any_login:hover {
     opacity: 1;
   }
-  #any_login form {
+  .any_login form {
     padding: 4px 6px;
   }
-  #any_login span {
+  .any_login span {
     display: none;
     vertical-align: middle;
   }
-  #any_login.any_login_auto_show span {
+  .any_login.any_login_auto_show span {
     display: inline;
   }
-  #any_login .any_login_user_information {
+  .any_login .any_login_user_information {
     padding-left: 10px;
     color: yellow;
   }
-  #any_login #any_login_id_input {
+  .any_login #any_login_id_input {
     width: 30px;
   }
-  #any_login span#current_user_information {
+  .any_login span#current_user_information {
     display: inline;
   }
-  #any_login span#current_user_information span {
+  .any_login span#current_user_information span {
     display: inline;
   }
-  #any_login span#anylogin_back_to_user {
+  .any_login span#anylogin_back_to_user {
     padding-left: 15px;
     color: cyan;
     display: inline;
