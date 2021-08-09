@@ -1,6 +1,6 @@
 <div class="any-login">
   <%= image_tag 'any_login/person.png', class: 'any-login__person-img' %>
-  <div class="any-login__forms-wrapper" style="padding: 10px 0;">
+  <div class="any-login__forms-wrapper">
     <% AnyLogin.klasses.each do |klass| %>
       <div>
         <%= form_tag any_login.sign_in_path(as: klass), :method => :post, class: 'any-login__form' do %>
@@ -19,10 +19,16 @@
         position: fixed;
         bottom: 0;
         left: 0;
-        opacity: 0.5;
         background: #5c4383;
         color: white;
         z-index: 100;
+    }
+    .any-login__person-img {
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    .any-login__form {
+        margin-top: 5px;
     }
 </style>
 
@@ -40,76 +46,12 @@
 <!--  // };-->
 <!--</script>-->
 
-<!--<style type="text/css" media="screen">-->
-<!--  .any_login {-->
-<!--    position: fixed;-->
-<!--    bottom: 0;-->
-<!--    left: 0;-->
-<!--    opacity: 0.5;-->
-<!--    background: #5c4383;-->
-<!--    color: white;-->
-<!--    font-size: 16px;-->
-<!--    line-height: 20px;-->
-<!--    z-index: 10000;-->
-<!--  }-->
-<!--  .any_login form {-->
-<!--    padding: 0;-->
-<!--    margin: 0;-->
-<!--    height: auto;-->
-<!--  }-->
-<!--  .any_login input, .any_login select {-->
-<!--    color: black;-->
-<!--    padding: 0;-->
-<!--    margin: 0;-->
-<!--    height: auto;-->
-<!--    float: none;-->
-<!--    text-decoration: none;-->
-<!--    position: unset;-->
-<!--    left: auto;-->
-<!--    top: auto;-->
-<!--    font-size: auto;-->
-<!--    line-height: auto;-->
-<!--  }-->
-<!--  .any_login .hidden_box {-->
-<!--    display: none;-->
-<!--  }-->
-<!--  .any_login .visible_box {-->
-<!--    display: inline;-->
-<!--  }-->
-<!--  .any_login.any_login_top_left {-->
-<!--    top: 0;-->
-<!--    left: 0;-->
-<!--  }-->
-<!--  .any_login.any_login_top_right {-->
-<!--    top: 0;-->
-<!--    right: 0;-->
-<!--  }-->
-<!--  .any_login.any_login_bottom_left {-->
-<!--    bottom: 0;-->
-<!--    left: 0;-->
-<!--  }-->
-<!--  .any_login.any_login_bottom_right {-->
-<!--    bottom: 0;-->
-<!--    right: 0;-->
-<!--  }-->
-<!--  .any_login.any_login_visible {-->
-<!--    opacity: 1;-->
-<!--  }-->
-<!--  .any_login img {-->
-<!--    cursor: pointer;-->
-<!--    vertical-align: middle;-->
-<!--  }-->
-<!--  .any_login:hover {-->
-<!--    opacity: 1;-->
-<!--  }-->
-<!--  .any_login form {-->
-<!--    padding: 4px 6px;-->
-<!--  }-->
-<!--  .any_login span {-->
-<!--    display: none;-->
-<!--    vertical-align: middle;-->
-<!--  }-->
-<!--  .any_login.any_login_auto_show span {-->
-<!--    display: inline;-->
-<!--  }-->
-<!--</style>-->
+<style type="text/css" media="screen">
+  .any_login .hidden_box {
+    display: none;
+  }
+  .any_login .visible_box {
+    display: inline;
+  }
+
+</style>
