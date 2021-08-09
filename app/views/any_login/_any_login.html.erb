@@ -50,8 +50,9 @@
   var AnyLogin = {};
   AnyLogin.on_image_click = function() {
       const elem = document.querySelector('.any_login_box');
-      elem.toggleClass("hidden_box");
-      elem.toggleClass("visible_box");
+      const formBox = document.querySelector('.hidden_box');
+      formBox.toggleClass("hidden_box");
+      formBox.toggleClass("visible_box");
   };
   AnyLogin.on_select_change = function() {
       document.getElementById('any_login_form').submit();
@@ -61,6 +62,8 @@
 <style type="text/css" media="screen">
   .any_login {
     position: fixed;
+    bottom: 0;
+    left: 0;
     opacity: 0.5;
     background: #5c4383;
     color: white;
