@@ -2,7 +2,7 @@
   <div class='<%= any_login_klasses %> any_login'>
     <%= form_tag any_login.sign_in_path(as: klass), :method => :post do %>
       <%= image_tag 'any_login/person.png', :alt => klass, :onclick => "AnyLogin.on_image_click();" %>
-      <span class='hidden_box'>
+      <span class='any_login_box hidden_box'>
         <%= any_login_select(klass) %>
         <%= any_login_submit %>
       </span>
@@ -44,7 +44,7 @@
 
   var AnyLogin = {};
   AnyLogin.on_image_click = function() {
-      var elem = document.getElementById('any_login_box');
+      var elem = document.querySelector('.any_login_box');
       elem.toggleClass("hidden_box");
       elem.toggleClass("visible_box");
   };
