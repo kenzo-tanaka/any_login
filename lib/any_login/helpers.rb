@@ -16,8 +16,8 @@ module AnyLogin
         submit_tag AnyLogin.login_button_label
       end
 
-      def any_login_select(klass)
-        collection = AnyLogin.collection(klass)
+      def any_login_select
+        collection = AnyLogin.collection
         select_options =
                         if collection.grouped?
                           grouped_options_for_select(collection.to_a)

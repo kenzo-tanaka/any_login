@@ -8,8 +8,6 @@ AnyLogin.setup do |config|
   # # Account, User, Person, etc
   # config.klass_name = 'User'
 
-  # config.klass_names = ['User', 'Staff']
-
   #  # .all, .active, .admins, .groped_collection, etc ... need to return an array (or hash with arrays) of users
   # config.collection_method = :all
 
