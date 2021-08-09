@@ -41,20 +41,18 @@
   const AnyLogin = {};
   AnyLogin.on_image_click = function() {
       const formBox = document.querySelector('.any-login__forms-wrapper');
-      formBox.classList.toggle('hidden');
-      formBox.classList.toggle('visible');
+      formBox.style.display = 'inline-block';
   };
 
-  // AnyLogin.on_select_change = function() {
-  //     document.getElementById('any_login_form').submit();
-  // };
+  AnyLogin.on_select_change = function () {
+    const anyLoginForm = document.querySelectorAll('.any-login__form');
+    anyLoginForm.forEach(form => {
+      const select = form.querySelector('select');
+      select.addEventListener('change', () => {
+        form.submit();
+      })
+    })
+  };
+  AnyLogin.on_select_change();
 </script>
 
-<style type="text/css" media="screen">
-  .any_login .hidden {
-    display: none;
-  }
-  .any_login .visible {
-    display: inline-block;
-  }
-</style>
