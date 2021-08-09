@@ -1,8 +1,8 @@
-<div class="any_login">
-  <%= image_tag 'any_login/person.png', :onclick => "AnyLogin.on_image_click();" %>
-  <div class="hidden_box">
+<div class="any_login" style="position: fixed; bottom: 0; left: 0; z-index: 100;">
+  <%= image_tag 'any_login/person.png' %>
+  <div class="any_login_form_wrapper">
     <% AnyLogin.klasses.each do |klass| %>
-      <div class='<%= any_login_klasses %>'>
+      <div>
         <%= form_tag any_login.sign_in_path(as: klass), :method => :post do %>
           <span>
             <%= any_login_select(klass) %>
@@ -15,120 +15,89 @@
 </div>
 
 
-<script type="text/javascript" charset="utf-8">
-  Element.prototype.hasClass = function (className) {
-      return new RegExp(' ' + className + ' ').test(' ' + this.className + ' ');
-  };
+<!--<script type="text/javascript" charset="utf-8">-->
+<!--  const AnyLogin = {};-->
+<!--  AnyLogin.on_image_click = function() {-->
+<!--      const formBox = document.querySelector('.any_login_form_wrapper');-->
+<!--      formBox.classList.remove('hidden_box');-->
+<!--      formBox.classList.add('visible_box');-->
+<!--  };-->
 
-  Element.prototype.addClass = function (className) {
-      if (!this.hasClass(className)) {
-          this.className += ' ' + className;
-      }
-  };
+<!--  // AnyLogin.on_select_change = function() {-->
+<!--  //     document.getElementById('any_login_form').submit();-->
+<!--  // };-->
+<!--</script>-->
 
-  Element.prototype.removeClass = function (className) {
-      var newClass = ' ' + this.className.replace(/[\t\r\n]/g, ' ') + ' '
-      if (this.hasClass(className)) {
-          while (newClass.indexOf( ' ' + className + ' ') >= 0) {
-              newClass = newClass.replace(' ' + className + ' ', ' ');
-          }
-          this.className = newClass.replace(/^\s+|\s+$/g, ' ');
-      }
-  };
-  Element.prototype.toggleClass = function (className) {
-      var newClass = ' ' + this.className.replace(/[\t\r\n]/g, " ") + ' ';
-      if (this.hasClass(className)) {
-          while (newClass.indexOf(" " + className + " ") >= 0) {
-              newClass = newClass.replace(" " + className + " ", " ");
-          }
-          this.className = newClass.replace(/^\s+|\s+$/g, ' ');
-      } else {
-          this.className += ' ' + className;
-      }
-  };
-
-  var AnyLogin = {};
-  AnyLogin.on_image_click = function() {
-      const elem = document.querySelector('.any_login_box');
-      const formBox = document.querySelector('.hidden_box');
-      formBox.toggleClass("hidden_box");
-      formBox.toggleClass("visible_box");
-  };
-  AnyLogin.on_select_change = function() {
-      document.getElementById('any_login_form').submit();
-  };
-</script>
-
-<style type="text/css" media="screen">
-  .any_login {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    opacity: 0.5;
-    background: #5c4383;
-    color: white;
-    font-size: 16px;
-    line-height: 20px;
-    z-index: 10000;
-  }
-  .any_login form {
-    padding: 0;
-    margin: 0;
-    height: auto;
-  }
-  .any_login input, .any_login select {
-    color: black;
-    padding: 0;
-    margin: 0;
-    height: auto;
-    float: none;
-    text-decoration: none;
-    position: unset;
-    left: auto;
-    top: auto;
-    font-size: auto;
-    line-height: auto;
-  }
-  .any_login .hidden_box {
-    display: none;
-  }
-  .any_login .visible_box {
-    display: inline;
-  }
-  .any_login.any_login_top_left {
-    top: 0;
-    left: 0;
-  }
-  .any_login.any_login_top_right {
-    top: 0;
-    right: 0;
-  }
-  .any_login.any_login_bottom_left {
-    bottom: 0;
-    left: 0;
-  }
-  .any_login.any_login_bottom_right {
-    bottom: 0;
-    right: 0;
-  }
-  .any_login.any_login_visible {
-    opacity: 1;
-  }
-  .any_login img {
-    cursor: pointer;
-    vertical-align: middle;
-  }
-  .any_login:hover {
-    opacity: 1;
-  }
-  .any_login form {
-    padding: 4px 6px;
-  }
-  .any_login span {
-    display: none;
-    vertical-align: middle;
-  }
-  .any_login.any_login_auto_show span {
-    display: inline;
-  }
-</style>
+<!--<style type="text/css" media="screen">-->
+<!--  .any_login {-->
+<!--    position: fixed;-->
+<!--    bottom: 0;-->
+<!--    left: 0;-->
+<!--    opacity: 0.5;-->
+<!--    background: #5c4383;-->
+<!--    color: white;-->
+<!--    font-size: 16px;-->
+<!--    line-height: 20px;-->
+<!--    z-index: 10000;-->
+<!--  }-->
+<!--  .any_login form {-->
+<!--    padding: 0;-->
+<!--    margin: 0;-->
+<!--    height: auto;-->
+<!--  }-->
+<!--  .any_login input, .any_login select {-->
+<!--    color: black;-->
+<!--    padding: 0;-->
+<!--    margin: 0;-->
+<!--    height: auto;-->
+<!--    float: none;-->
+<!--    text-decoration: none;-->
+<!--    position: unset;-->
+<!--    left: auto;-->
+<!--    top: auto;-->
+<!--    font-size: auto;-->
+<!--    line-height: auto;-->
+<!--  }-->
+<!--  .any_login .hidden_box {-->
+<!--    display: none;-->
+<!--  }-->
+<!--  .any_login .visible_box {-->
+<!--    display: inline;-->
+<!--  }-->
+<!--  .any_login.any_login_top_left {-->
+<!--    top: 0;-->
+<!--    left: 0;-->
+<!--  }-->
+<!--  .any_login.any_login_top_right {-->
+<!--    top: 0;-->
+<!--    right: 0;-->
+<!--  }-->
+<!--  .any_login.any_login_bottom_left {-->
+<!--    bottom: 0;-->
+<!--    left: 0;-->
+<!--  }-->
+<!--  .any_login.any_login_bottom_right {-->
+<!--    bottom: 0;-->
+<!--    right: 0;-->
+<!--  }-->
+<!--  .any_login.any_login_visible {-->
+<!--    opacity: 1;-->
+<!--  }-->
+<!--  .any_login img {-->
+<!--    cursor: pointer;-->
+<!--    vertical-align: middle;-->
+<!--  }-->
+<!--  .any_login:hover {-->
+<!--    opacity: 1;-->
+<!--  }-->
+<!--  .any_login form {-->
+<!--    padding: 4px 6px;-->
+<!--  }-->
+<!--  .any_login span {-->
+<!--    display: none;-->
+<!--    vertical-align: middle;-->
+<!--  }-->
+<!--  .any_login.any_login_auto_show span {-->
+<!--    display: inline;-->
+<!--  }-->
+<!--</style>-->
