@@ -1,5 +1,5 @@
 <div class="any-login">
-  <%= image_tag 'any_login/person.png', class: 'any-login__person-img' %>
+  <%= image_tag 'any_login/person.png', class: 'any-login__person-img', onclick: 'AnyLogin.on_image_click();' %>
   <div class="any-login__forms-wrapper">
     <% AnyLogin.klasses.each do |klass| %>
       <div>
@@ -22,10 +22,14 @@
         background: #5c4383;
         color: white;
         z-index: 100;
+        padding: 5px;
     }
     .any-login__person-img {
         cursor: pointer;
         vertical-align: middle;
+    }
+    .any-login__forms-wrapper {
+        display: none;
     }
     .any-login__form {
         margin-top: 5px;
@@ -33,25 +37,24 @@
 </style>
 
 
-<!--<script type="text/javascript" charset="utf-8">-->
-<!--  const AnyLogin = {};-->
-<!--  AnyLogin.on_image_click = function() {-->
-<!--      const formBox = document.querySelector('.any_login_form_wrapper');-->
-<!--      formBox.classList.remove('hidden_box');-->
-<!--      formBox.classList.add('visible_box');-->
-<!--  };-->
+<script type="text/javascript" charset="utf-8">
+  const AnyLogin = {};
+  AnyLogin.on_image_click = function() {
+      const formBox = document.querySelector('.any-login__forms-wrapper');
+      formBox.classList.toggle('hidden');
+      formBox.classList.toggle('visible');
+  };
 
-<!--  // AnyLogin.on_select_change = function() {-->
-<!--  //     document.getElementById('any_login_form').submit();-->
-<!--  // };-->
-<!--</script>-->
+  // AnyLogin.on_select_change = function() {
+  //     document.getElementById('any_login_form').submit();
+  // };
+</script>
 
 <style type="text/css" media="screen">
-  .any_login .hidden_box {
+  .any_login .hidden {
     display: none;
   }
-  .any_login .visible_box {
-    display: inline;
+  .any_login .visible {
+    display: inline-block;
   }
-
 </style>
