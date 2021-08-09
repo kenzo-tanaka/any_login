@@ -24,9 +24,6 @@ module AnyLogin
   mattr_accessor :klass_name
   @@klass_name = 'User'
 
-  mattr_accessor :klass_names
-  @@klass_names = ['User']
-
   # Sign-in Method
   mattr_accessor :sign_in
   @@sign_in = nil
@@ -91,16 +88,12 @@ module AnyLogin
     yield(self)
   end
 
-  def self.collection(klass)
-    Collection.new(collection_raw(klass))
+  def self.collection
+    Collection.new(collection_raw)
   end
 
   def self.klass
     @@klass = AnyLogin.klass_name.constantize
-  end
-
-  def self.klasses
-    @@klasses = AnyLogin.klass_names.map(&:constantize)
   end
 
   def self.cookie_name
@@ -122,9 +115,9 @@ module AnyLogin
     end
   end
 
-  def self.collection_raw(klass)
+  def self.collection_raw
     @@collection_raw = begin
-      result = klass.send(AnyLogin.collection_method)
+      result = AnyLogin.klass.send(AnyLogin.collection_method)
       if limit == :none
         format_collection_raw(result)
       else
