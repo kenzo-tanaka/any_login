@@ -1,14 +1,19 @@
-<% AnyLogin.klasses.each do |klass| %>
-  <div class='<%= any_login_klasses %> any_login'>
-    <%= form_tag any_login.sign_in_path(as: klass), :method => :post do %>
-      <%= image_tag 'any_login/person.png', :alt => klass, :onclick => "AnyLogin.on_image_click();" %>
-      <span class='any_login_box hidden_box'>
-        <%= any_login_select(klass) %>
-        <%= any_login_submit %>
-      </span>
+<div class="any_login">
+  <%= image_tag 'any_login/person.png', :alt => klass, :onclick => "AnyLogin.on_image_click();" %>
+  <div class="hidden_box">
+    <% AnyLogin.klasses.each do |klass| %>
+      <div class='<%= any_login_klasses %>'>
+        <%= form_tag any_login.sign_in_path(as: klass), :method => :post do %>
+          <span>
+            <%= any_login_select(klass) %>
+            <%= any_login_submit %>
+          </span>
+        <% end %>
+      </div>
     <% end %>
   </div>
-<% end %>
+</div>
+
 
 <script type="text/javascript" charset="utf-8">
   Element.prototype.hasClass = function (className) {
@@ -44,7 +49,7 @@
 
   var AnyLogin = {};
   AnyLogin.on_image_click = function() {
-      var elem = document.querySelector('.any_login_box');
+      const elem = document.querySelector('.any_login_box');
       elem.toggleClass("hidden_box");
       elem.toggleClass("visible_box");
   };
